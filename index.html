@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>郑恩欣的个人主页</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -23,30 +24,52 @@
     }
 
     header {
-      background: url('images/background.jpeg') no-repeat center center fixed;
+      background: linear-gradient(rgba(135, 206, 235, 0.7), rgba(135, 206, 235, 0.7)), 
+                  url('images/background.jpeg') no-repeat center center fixed;
       background-size: cover;
       color: white;
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
       position: relative;
+      box-shadow: 0 4px 20px rgba(135, 206, 235, 0.3);
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: linear-gradient(to right, #87CEEB, #2575fc, #87CEEB);
+      opacity: 0.5;
     }
 
     header h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
+      font-size: 3.2em;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      animation: fadeInDown 1s ease;
     }
 
     header p.subtitle {
-      font-size: 1.2em;
+      font-size: 1.4em;
       opacity: 0.9;
+      animation: fadeInUp 1s ease;
     }
 
     nav {
       background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    nav.sticky {
+      background-color: rgba(135, 206, 235, 0.95);
+      backdrop-filter: blur(10px);
     }
 
     nav ul {
@@ -57,108 +80,282 @@
 
     nav ul li a {
       display: block;
-      padding: 16px 24px;
+      padding: 18px 24px;
       color: #333;
       text-decoration: none;
       font-weight: 600;
       transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(to right, #87CEEB, #2575fc);
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
     }
 
     nav ul li a:hover {
-      background-color: #e9ecef;
       color: #2575fc;
+      transform: translateY(-2px);
     }
 
     section {
-      max-width: 960px;
-      margin: 40px auto;
+      max-width: 1000px;
+      margin: 60px auto;
       padding: 0 20px;
+      animation: fadeIn 0.8s ease;
     }
 
     section h2 {
-      font-size: 1.8em;
+      font-size: 2.2em;
       color: #2c3e50;
-      margin-bottom: 20px;
-      border-left: 5px solid #87CEEB;  
-      padding-left: 15px;
+      margin-bottom: 30px;
+      border-left: 8px solid #87CEEB;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #87CEEB, transparent);
     }
 
     .card {
       background: white;
-      border-radius: 10px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 12px rgba(135, 206, 235, 0.2);  
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(135, 206, 235, 0.2);
+      border: 1px solid #e9ecef;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #87CEEB, #2575fc);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(135, 206, 235, 0.3);
     }
 
     .profile-container {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 40px;
+      background: linear-gradient(135deg, #f8f9fa, #e9f7fe);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(135, 206, 235, 0.15);
     }
 
     .profile-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 18%; 
+      width: 180px;
+      height: 180px;
+      border-radius: 18%;
       object-fit: cover;
-      border: 3px solid #87CEEB;  
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 5px solid #87CEEB;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transition: all 0.5s ease;
+      animation: pulse 3s infinite;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(135, 206, 235, 0.4);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #87CEEB;
+      color: white;
+      border-radius: 50%;
+      font-size: 1.2em;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(135, 206, 235, 0.4);
     }
 
     .project-item, .exp-item {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      padding: 25px;
+      background: linear-gradient(120deg, #f8f9fa, #e9f7fe);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .project-item:hover, .exp-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(135, 206, 235, 0.25);
     }
 
     .project-item h3, .exp-item h3 {
       color: #2575fc;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      font-size: 1.4em;
     }
 
     .date {
       color: #6c757d;
-      font-size: 0.9em;
-      margin-bottom: 10px;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+      display: block;
     }
 
     ul.list {
-      padding-left: 20px;
+      padding-left: 25px;
     }
 
     ul.list li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 15px;
+    }
+
+    ul.list li::before {
+      content: '✓';
+      position: absolute;
+      left: -15px;
+      top: 0;
+      color: #87CEEB;
+      font-weight: bold;
     }
 
     footer {
       text-align: center;
-      padding: 30px 20px;
-      background-color: #333;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #2c3e50, #1a2530);
       color: #eee;
-      margin-top: 60px;
+      margin-top: 80px;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #87CEEB, #2575fc, #87CEEB);
     }
 
     footer p {
-      font-size: 1em;
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .skill-badge {
+      display: inline-block;
+      padding: 8px 15px;
+      background: rgba(135, 206, 235, 0.15);
+      border: 1px solid #87CEEB;
+      border-radius: 30px;
+      margin: 5px;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+    }
+
+    .skill-badge:hover {
+      background: rgba(135, 206, 235, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .skill-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
     }
 
     @media (max-width: 768px) {
       .profile-container {
         flex-direction: column;
         text-align: center;
+        gap: 20px;
       }
       
       header h1 {
-        font-size: 2.2em;
+        font-size: 2.5em;
       }
       
       nav ul {
-        flex-direction: row;
-        overflow-x: auto;
+        flex-wrap: wrap;
+      }
+      
+      nav ul li a {
+        padding: 12px 15px;
+        font-size: 0.9em;
       }
       
       section {
-        padding: 0 15px;
+        margin: 40px auto;
       }
+      
+      section h2 {
+        font-size: 1.8em;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+      50% { transform: scale(1.05); box-shadow: 0 15px 30px rgba(135, 206, 235, 0.3); }
+      100% { transform: scale(1); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
     }
   </style>
 </head>
@@ -168,12 +365,18 @@
   <header id="home">
     <h1>郑恩欣</h1>
     <p class="subtitle">周口师范学院 · 智能科学与技术</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
   </header>
 
   <!-- 导航栏 -->
   <nav>
     <ul>
-      <li><a href="#home">首页</a></li>
+      <li><a href="#home" class="active">首页</a></li>
       <li><a href="#projects">项目</a></li>
       <li><a href="#skills">技能</a></li>
       <li><a href="#experience">经历</a></li>
@@ -196,6 +399,12 @@
           <p>✉️ 邮箱：<a href="mailto:EnxinZheng_205@outlook.com">EnxinZheng_205@outlook.com</a></p>
           <br>
           <p>热爱深度学习与多模态AI技术，专注于计算机视觉方向的研究与工程实践。具备从算法设计到模型部署的全流程开发能力，持续关注 GPT-4V 等前沿技术发展，致力于推动技术创新落地。</p>
+          
+          <div class="social-links" style="justify-content: center; margin-top: 20px;">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
       </div>
     </div>
@@ -234,12 +443,19 @@
   <section id="skills">
     <h2>技能</h2>
     <div class="card">
-      <ul class="list">
-        <li><strong>深度学习框架：</strong>PyTorch、TensorFlow</li>
-        <li><strong>编程语言：</strong>Python</li>
-        <li><strong>核心技术：</strong>ResNet50 迁移学习、密度图回归、多模态特征融合</li>
-        <li><strong>项目经验：</strong>主导多模态模型从数据清洗、训练到 API 部署全流程</li>
-        <li><strong>工程能力：</strong>轻量化模型设计、系统性知识库构建、算法落地推动</li>
+      <div class="skill-container">
+        <div class="skill-badge"><i class="fab fa-python"></i> Python</div>
+        <div class="skill-badge"><i class="fab fa-pytorch"></i> PyTorch</div>
+        <div class="skill-badge"><i class="fab fa-tensorflow"></i> TensorFlow</div>
+        <div class="skill-badge"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-badge"><i class="fab fa-git"></i> Git</div>
+        <div class="skill-badge"><i class="fas fa-cloud"></i> AWS</div>
+      </div>
+      
+      <ul class="list" style="margin-top: 20px;">
+        <li><strong>核心技术能力：</strong>ResNet50 迁移学习、密度图回归、多模态特征融合、模型量化与部署</li>
+        <li><strong>工程实践能力：</strong>轻量化模型设计、系统性知识库构建、算法落地推动、API 开发与维护</li>
+        <li><strong>研究能力：</strong>文献调研、实验设计、数据分析、论文撰写与学术交流</li>
       </ul>
     </div>
   </section>
@@ -250,6 +466,7 @@
     <div class="card">
       <div class="exp-item">
         <h3>学生会学习部干事</h3>
+        <p class="date">2023.09 - 至今</p>
         <ul class="list">
           <li>活动策划：累计组织多场校级学术讲座，参与人数超百人，优化流程使筹备时间缩短 20%</li>
           <li>跨部门协作：协调 5 个学生组织完成联合招新，提升协同效率</li>
@@ -263,7 +480,8 @@
           <li>2024年国家励志奖学金</li>
           <li>2024年中国工业互联网安全大赛河南省选拔赛三等奖</li>
           <li>2025年国家励志奖学金</li>
-          <li>阿里云大模型工程师</li>
+          <li>阿里云大模型工程师认证</li>
+          <li>全国大学生数学建模竞赛省级二等奖</li>
         </ul>
       </div>
     </div>
@@ -271,11 +489,70 @@
 
   <!-- 页脚 -->
   <footer>
-    <p>&copy; 2025 郑恩欣的 GitHub 个人主页</p>
+    <p>&copy; 2025 郑恩欣的个人主页 | 热爱技术，追求卓越</p>
+    <p style="margin-top: 10px; opacity: 0.8;">感谢您的访问，期待与您共同探索AI的无限可能</p>
   </footer>
 
+  <script>
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 100) {
+        nav.classList.add('sticky');
+      } else {
+        nav.classList.remove('sticky');
+      }
+      
+      // 添加当前活动导航项
+      const sections = document.querySelectorAll('section');
+      const navItems = document.querySelectorAll('nav ul li a');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 100) {
+          navItems.forEach(item => item.classList.remove('active'));
+          const id = section.getAttribute('id');
+          document.querySelector(`nav ul li a[href="#${id}"]`).classList.add('active');
+        }
+      });
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // 卡片动画
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+    });
+
+    // 简单的交叉观察器
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
-</html>
-
 
