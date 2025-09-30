@@ -1,0 +1,101 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box - sizing: border - box;
+}
+
+body {
+    font - family: Arial, sans - serif;
+    line - height: 1.6;
+    background - color: #f4f9fc;
+}
+
+/* 导航栏样式 */
+nav {
+    background - color: #007bff;
+    color: white;
+}
+
+nav ul {
+    list - style: none;
+    display: flex;
+    justify - content: space - around;
+    padding: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text - decoration: none;
+}
+
+/* 主内容样式 */
+main {
+    padding: 20px;
+}
+
+/* 首页背景图片样式 */
+.background - img {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.background - img img {
+    width: 100%;
+    height: 100%;
+    object - fit: cover;
+}
+
+/* 个人信息和简介区域样式 */
+.profile - section {
+    display: flex;
+    justify - content: space - around;
+    align - items: center;
+    margin - top: 30px;
+}
+
+.profile - img {
+    width: 200px;
+    height: 200px;
+    border - radius: 50%;
+    overflow: hidden;
+}
+
+.profile - img img {
+    width: 100%;
+    height: 100%;
+    object - fit: cover;
+}
+
+.profile - intro {
+    width: 60%;
+}
+
+/* 生活随拍部分样式 */
+#life - photos {
+    margin - top: 50px;
+}
+
+.photo - gallery {
+    display: flex;
+    justify - content: space - around;
+    flex - wrap: wrap;
+}
+
+.photo - gallery img {
+    width: 300px;
+    height: 200px;
+    object - fit: cover;
+    margin: 10px;
+    box - shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 页脚样式 */
+footer {
+    background - color: #007bff;
+    color: white;
+    text - align: center;
+    padding: 15px;
+    margin - top: 30px;
+}
