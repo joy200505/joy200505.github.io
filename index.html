@@ -1,61 +1,153 @@
 <!DOCTYPE html>
-<html lang="zh - CN">
-
+<html lang="zh">
 <head>
-    <meta charset="UTF - 8">
-    <meta name="viewport" content="width=device - width, initial - scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>个人主页</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>郑恩欣 - 个人简历</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9fb;
+      color: #333;
+      line-height: 1.8;
+      margin: 0;
+      padding: 40px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 50px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2.2em;
+    }
+    .subtitle {
+      text-align: center;
+      color: #7f8c8d;
+      font-style: italic;
+      margin-top: 0;
+    }
+    section {
+      margin: 30px 0;
+    }
+    h2 {
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 8px;
+      color: #2980b9;
+      font-size: 1.4em;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin: 10px 0;
+    }
+    .contact-info {
+      text-align: center;
+      color: #555;
+      font-size: 0.95em;
+    }
+    .highlight {
+      background-color: #e3f2fd;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #1565c0;
+    }
+  </style>
 </head>
-
 <body>
-    <!-- 导航栏 -->
-    <nav>
-        <ul>
-            <li><a href="#">首页</a></li>
-            <li><a href="#">我的资料</a></li>
-            <li><a href="#">项目展示</a></li>
-            <li><a href="#">联系我</a></li>
-        </ul>
-    </nav>
 
-    <!-- 主内容区域 -->
-    <main>
-        <!-- 首页部分 -->
-        <section id="home">
-            <!-- 背景图片区域 -->
-            <div class="background - img">
-                <img src="cat.jpg" alt="猫咪背景图">
-            </div>
-            <!-- 个人信息和简介区域 -->
-            <div class="profile - section">
-                <!-- 个人形象展示 -->
-                <div class="profile - img">
-                    <img src="profile.jpg" alt="个人形象">
-                </div>
-                <!-- 个人简介 -->
-                <div class="profile - intro">
-                    <h2>个人简介</h2>
-                    <p>我是一名热爱前端技术的计算机专业学生，在学习过程中不断探索...</p>
-                </div>
-            </div>
-        </section>
+  <div class="container">
 
-        <!-- 生活随拍部分 -->
-        <section id="life - photos">
-            <h2>生活随拍</h2>
-            <div class="photo - gallery">
-                <img src="photo1.jpg" alt="生活照片1">
-                <img src="photo2.jpg" alt="生活照片2">
-                <img src="photo3.jpg" alt="生活照片3">
-            </div>
-        </section>
-    </main>
+    <!-- 基本信息 -->
+    <h1>郑恩欣</h1>
+    <p class="subtitle">智能科学与技术 · 周口师范学院</p>
+    <p class="contact-info">
+      📞 18965007182 | 📧 <a href="mailto:3101566514@qq.com">3101566514@qq.com</a> |
+      性别：女 | 政治面貌：共青团员
+    </p>
 
-    <!-- 页脚 -->
-    <footer>
-        <p>&copy; 2024 版权所有</p>
-    </footer>
+    <!-- 教育经历 -->
+    <section>
+      <h2>🎓 教育经历</h2>
+      <ul>
+        <li><strong>周口师范学院</strong> —— 智能科学与技术专业</li>
+        <li>GPA：3.59（专业前1%）</li>
+      </ul>
+    </section>
+
+    <!-- 项目经历 -->
+    <section>
+      <h2>💼 项目经历</h2>
+
+      <h3>人群计数（2025.03 – 2025.05）</h3>
+      <p><em>业务目标：</em>解决高密度场景下人群计数准确率低的问题，突破复杂背景与密度不均的技术瓶颈。</p>
+      <ul>
+        <li>构建<strong>视觉-文本双模态框架</strong>：使用 ResNet50 提取空间特征，结合人工语义标签驱动 BERT 生成辅助特征</li>
+        <li>设计<strong>动态权重融合机制</strong>：通过 MLP 实现跨模态特征自适应加权，联合优化密度图质量与绝对计数精度</li>
+        <li>核心技术栈：PyTorch / TensorFlow / Python；掌握迁移学习、密度图回归建模与多模态融合</li>
+        <li>成果：相比单模态基线 MAE 相对降低 <span class="highlight">32%</span>，模型鲁棒性显著提升</li>
+      </ul>
+
+      <h3>CIFAR-10 图像分类（2024.10 – 2024.12）</h3>
+      <p><em>业务目标：</em>构建图像分类技术选型体系，完成从数据处理到模型部署的全流程闭环。</p>
+      <ul>
+        <li>设计多维度数据增强策略（标准化 + 随机翻转），提升模型泛化能力</li>
+        <li>开发包含 LeNet5 至 WideResNet 等 <strong>11 种 CNN 架构</strong>的对比实验框架</li>
+        <li>应用混合精度训练与模型剪枝技术，实现高效部署优化</li>
+        <li>成果：形成可复用的 <span class="highlight">CNN 模型选型标准</span>，支持后续研究快速迭代</li>
+      </ul>
+    </section>
+
+    <!-- 在校经历 -->
+    <section>
+      <h2>📚 在校经历</h2>
+      <ul>
+        <li><strong>学生会学习部干事</strong></li>
+        <li>组织多场校级学术讲座，参与人数超百人，优化流程使筹备时间缩短 <strong>20%</strong></li>
+        <li>协调 5 个学生组织完成联合招新，通过需求匹配提升协同效率</li>
+        <li>设计活动反馈问卷并分析有效样本，提出 3 项改进建议推动服务质量升级</li>
+      </ul>
+    </section>
+
+    <!-- 专业技能 -->
+    <section>
+      <h2>🔧 相关技能</h2>
+      <ul>
+        <li><strong>深度学习框架：</strong>PyTorch、TensorFlow（支持万级多模态数据训练）</li>
+        <li><strong>编程语言：</strong>Python</li>
+        <li><strong>算法应用：</strong>ResNet50 迁移学习、密度图回归、多模态特征融合</li>
+        <li><strong>工程能力：</strong>主导模型从数据清洗 → 训练 → API 部署全流程开发</li>
+        <li><strong>前沿关注：</strong>持续追踪 GPT-4V 等多模态创新技术，建立系统性知识库</li>
+      </ul>
+    </section>
+
+    <!-- 荣誉奖项 -->
+    <section>
+      <h2>🏆 荣誉证书</h2>
+      <ul>
+        <li>国家励志奖学金</li>
+      </ul>
+    </section>
+
+    <!-- 自我评价 -->
+    <section>
+      <h2>✨ 自我评价</h2>
+      <ul>
+        <li>具备扎实的<strong>跨模态特征融合架构设计能力</strong>与复杂数据场景下的模型调优经验</li>
+        <li>拥有完整的深度学习项目<strong>工程化落地能力</strong>，注重技术的商业价值转化</li>
+        <li>积极主动，热爱技术创新，坚持通过实践推动算法真正“跑起来”</li>
+      </ul>
+    </section>
+
+  </div>
+
 </body>
-
 </html>
+
