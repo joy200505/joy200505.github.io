@@ -19,7 +19,12 @@
     }
 
     header {
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      /* 修改背景属性为引入图片 */
+      background: url('image/background.jpeg') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
       color: white;
       text-align: center;
       padding: 60px 20px;
